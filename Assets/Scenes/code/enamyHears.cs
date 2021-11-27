@@ -4,9 +4,14 @@ using UnityEngine;
 public class enamyHears : MonoBehaviour
 {
     float h = 1f;
-    void OnTriggerEnter2D (Collider2D col){
-    
-     GameControlScript.health -= h;
+    float delay;
+    void OnTriggerStay2D (Collider2D col)
+    {
+       if (delay < Time.time)
+       {
+         GameControlScript.health -= h;
+         delay = Time.time +1;
+       }
     }
     // Start is called before the first frame update
     void Start()
